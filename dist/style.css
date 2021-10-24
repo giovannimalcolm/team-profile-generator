@@ -1,0 +1,56 @@
+.header{
+    color: white;
+    background: red;
+    text-align: center;
+    padding: 4% 0%;
+    width: 100%;
+    font-size: 50px;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+   
+}
+
+
+
+
+/* container item for cards  */
+.cards{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* singular card  */
+.card{
+    box-shadow: 10px 5px 20px black;
+    border-radius: 2%;
+    margin: 30px 10px 10px 10px;
+}
+
+.details{
+    padding: 5% 5%;
+
+}
+
+.card-body{
+    background-color: blue;
+    border-radius: 2%;
+}
+
+.list-container{
+    margin: 5%;
+}
+
+
+
+.card-title{
+    color: white;
+}
+
+.card-text{
+    color:white;
+}
