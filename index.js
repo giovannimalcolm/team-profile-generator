@@ -131,3 +131,15 @@ promptUser()
 .catch((err) => {
     console.log(err);
 });
+
+
+var renderCard = (answers) => {
+    if(employeeType = 'Engineer'){
+        //create elements, set values, append etc etc 
+    }
+    else if (employeeType = 'Intern'){
+        //create elements, set values, append etc etc 
+    }
+    return;
+
+}
