@@ -33,13 +33,6 @@ var promptUser = () => {
                 choices: ['Engineer', 'Intern', 'I don\'t want to add any more team members']
             }
         ])
-        if (answers){
-            renderCard();
-            resolve(answers);
-        }
-        else{
-            reject(Error("Something went wrong!"))
-        }
        
     });
 };
@@ -116,13 +109,24 @@ const addIntern = () => {
     });
 };
 
+var pickEmployee = (employeeType) => {
+    if(employeeType = 'Engineer'){
+        addEngineer();
+    }
+    else if (employeeType = 'Intern'){
+        addIntern();
+    }
+    else{
+        return;
+    }
+
+}
+
+
 promptUser()
 .then((employeeType) => {
-    renderCard();
-    return addEngineer();
-})
-.then((employeeType) => {
-    return addIntern();
+    pickEmployee(employeeType);
+    return 
 })
 .catch((err) => {
     console.log(err);
