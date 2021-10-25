@@ -1,4 +1,19 @@
-<!DOCTYPE html>
+var renderCard = (answers) => {
+
+    if (answers.officeNumber){
+        ///add the manager card 
+    }
+    
+
+   
+
+}
+
+module.exports = renderCard;
+
+
+
+const baseHTML = `<!DOCTYPE html>
 
 <html>
     <head>
@@ -19,8 +34,53 @@
     </head>
     <body>
        <header class ="header">My Team</header>
-       <container class = 'cards'>
-        <div class="card" style="width: 18rem;">
+        `
+
+
+const managerCard = ` 
+<container class = 'cards'>
+<div class="card" style="width: 18rem;">
+ <div class="card-body">
+   <h5 class="card-title">Manager</h5>
+   <p class="card-text">
+     <i class="fas fa-mug-hot"></i>
+        ${answers.name}
+   </p>
+ </div>
+ <div class = 'list-container'>
+ <ul class="list-group details">
+   <li class="list-group-item">ID:${answers.ID} </li>
+   <li class="list-group-item">Email:${answers.email}</li>
+   <li class="list-group-item">Office Number:${answers.officeNumber}</li>
+ </ul>
+</div>
+</div>
+`
+
+
+const engineerCard = `
+
+<<div class="card" style="width: 18rem;">
+<div class="card-body">
+  <h5 class="card-title">Manager</h5>
+  <p class="card-text">
+    <i class="fas fa-mug-hot"></i>
+       ${answers.name}
+  </p>
+</div>
+<div class = 'list-container'>
+<ul class="list-group details">
+  <li class="list-group-item">ID:${answers.ID} </li>
+  <li class="list-group-item">Email:${answers.email}</li>
+  <li class="list-group-item">Office Number:${answers.officeNumber}</li>
+</ul>
+</div>
+</div>
+`
+
+const internCard = `
+
+<div class="card" style="width: 18rem;">
          <div class="card-body">
            <h5 class="card-title">Manager</h5>
            <p class="card-text">
@@ -36,17 +96,4 @@
          </ul>
         </div>
         </div>
-        </container>
-        
-        
-       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-       crossorigin="anonymous"></script>
-       <script src="/index.js" async defer></script>
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-
-    </body>
-</html>
-
-
+`

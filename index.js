@@ -1,10 +1,10 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const { inherits } = require("util");
+const renderCard = require("./utils/renderCard");
+
 
 
 var promptUser = () => {
-     new Promise((resolve,reject) => {
     inquirer
         .prompt([
             {
@@ -34,14 +34,13 @@ var promptUser = () => {
                 choices: ['Engineer', 'Intern', 'I don\'t want to add any more team members']
             }
         ])
-        if (answers.length != 5){
-            reject(new Error('Something went wrong'));
-        }
-        else {
-            renderCard(answers)
-            resolve(answers.employeeType)
-        }
-    });
+        .then((answers) => {
+            renderCard(answers);
+            pickEmployee(answers.employeeType)
+        })
+        .catch((err) => {
+        err ? console.error(err) : console.info(`Something went wrong`)
+    })
 };
 
 const addEngineer = () => {
@@ -102,8 +101,8 @@ const addIntern = () => {
             },
             {
                 type: 'input',
-                name: 'github',
-                message: 'What is the intern\'s github?',
+                name: 'school',
+                message: 'What is the intern\'s school?',
             },
             {
                 type: 'list',
@@ -129,72 +128,15 @@ var pickEmployee = (employeeType) => {
 
 }
 
-promptUser()
-.then(() => {
-    pickEmployee(answers.employeeType);
-    return 
-})
-.catch((err) => {
-    console.log(err);
-});
 
 
 
-var renderCard = (answers) => {
-    if (employeeType = 'Manager'){
-        var box = $.create("container")
-        box.addClass('cards')
-        $.append(box)
-
-        var managerCard = $.create('div')
-        managerCard.addClass('card')
-        managerCard.attr('style', 'width: 18rem')
-        var cardBody = $.create('div')
-        cardBody.addClass('card-body')
-
-        cardBody.append(managerCard);
-
-        var managerName = $.create('h5')
-        managerName.addClass('card-title')
-        managerName.append(cardBody)
-        var employeeRole = $.create('p')
-        employeeRole.addClass('card-text')
-        employeeType.append(cardBody)
-
-        var icon = $.create('i');
-        icon.addClass('fas fa-mug-hot');
-        icon.append(employeeRole);
-
-        var detailsContainer = $.create('div')
-        detailsContainer.addClass('list-container')
-        detailsContainer.append(managerCard)
-        var details = $.create('ul')
-        details.addClass('list-group details')
-        details.append(detailsContainer)
-
-        var detail1 =$.create('li')
-        var detail2 =$.create('li')
-        var detail3 =$.create('li')
-
-        detail1.append(details)
-        detail2.append(details)
-        detail3.append(details)
-
-    }
-
-    else if(employeeType = 'Engineer'){
-        //create elements, set values, append etc etc 
-    }
-    else if (employeeType = 'Intern'){
-        //create elements, set values, append etc etc 
-    }
-    return;
-
-}
 
 
-init();
+
 
 var init = () =>{
     promptUser();
 }
+
+init();
