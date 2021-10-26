@@ -44,14 +44,14 @@ const managerCard = `
    <h5 class="card-title">Manager</h5>
    <p class="card-text">
      <i class="fas fa-mug-hot"></i>
-        ${answers.name}
+       
    </p>
  </div>
  <div class = 'list-container'>
  <ul class="list-group details">
-   <li class="list-group-item">ID:${answers.ID} </li>
-   <li class="list-group-item">Email:${answers.email}</li>
-   <li class="list-group-item">Office Number:${answers.officeNumber}</li>
+   <li class="list-group-item">ID: </li>
+   <li class="list-group-item">Email:</li>
+   <li class="list-group-item">Office Number:</li>
  </ul>
 </div>
 </div>
@@ -65,14 +65,14 @@ const engineerCard = `
   <h5 class="card-title">Manager</h5>
   <p class="card-text">
     <i class="fas fa-mug-hot"></i>
-       ${answers.name}
+       
   </p>
 </div>
 <div class = 'list-container'>
 <ul class="list-group details">
-  <li class="list-group-item">ID:${answers.ID} </li>
-  <li class="list-group-item">Email:${answers.email}</li>
-  <li class="list-group-item">Office Number:${answers.officeNumber}</li>
+  <li class="list-group-item">ID:</li>
+  <li class="list-group-item">Email:</li>
+  <li class="list-group-item">Office Number:</li>
 </ul>
 </div>
 </div>
@@ -85,14 +85,14 @@ const internCard = `
            <h5 class="card-title">Manager</h5>
            <p class="card-text">
              <i class="fas fa-mug-hot"></i>
-                ${answers.name}
+          
            </p>
          </div>
          <div class = 'list-container'>
          <ul class="list-group details">
-           <li class="list-group-item">ID:${answers.ID} </li>
-           <li class="list-group-item">Email:${answers.email}</li>
-           <li class="list-group-item">Office Number:${answers.officeNumber}</li>
+           <li class="list-group-item">ID: </li>
+           <li class="list-group-item">Email:</li>
+           <li class="list-group-item">Office Number:</li>
          </ul>
         </div>
         </div>

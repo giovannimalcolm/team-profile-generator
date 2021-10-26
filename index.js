@@ -1,6 +1,7 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 const renderCard = require("./utils/renderCard");
+const Manager = require("./lib/manager");
 
 
 
@@ -35,8 +36,11 @@ var promptUser = () => {
             }
         ])
         .then((answers) => {
-            renderCard(answers);
-            pickEmployee(answers.employeeType)
+            module.exports = answers;
+            var manager1 = new Manager (answers.name, answers.ID, answers.email, answers.officeNumber);
+            console.log(manager1)
+            //renderCard(answers);
+           // pickEmployee(answers.employeeType)
         })
         .catch((err) => {
         err ? console.error(err) : console.info(`Something went wrong`)
@@ -74,7 +78,7 @@ const addEngineer = () => {
                 choices: ['Engineer', 'Intern', 'I don\'t want to add any more team members']
             }
         ])
-        renderCard();
+       // renderCard();
         
     });
 };
@@ -111,7 +115,7 @@ const addIntern = () => {
                 choices: ['Engineer', 'Intern', 'I don\'t want to add any more team members']
             }
         ])
-        renderCard();
+        renderCard();//
     });
 };
 
