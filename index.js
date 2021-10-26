@@ -3,6 +3,7 @@ const fs = require("fs");
 const renderCard = require("./utils/renderCard");
 const Manager = require("./lib/manager");
 
+employeesArr = []
 
 
 var promptUser = () => {
@@ -38,9 +39,10 @@ var promptUser = () => {
         .then((answers) => {
             module.exports = answers;
             var manager1 = new Manager (answers.name, answers.ID, answers.email, answers.officeNumber);
-            console.log(manager1)
-            //renderCard(answers);
-           // pickEmployee(answers.employeeType)
+            employeesArr.push(manager1);
+            console.log(employeesArr)
+            
+            //renderCard();
         })
         .catch((err) => {
         err ? console.error(err) : console.info(`Something went wrong`)

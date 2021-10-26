@@ -37,25 +37,7 @@ const baseHTML = `<!DOCTYPE html>
         `
 
 
-const managerCard = ` 
-<container class = 'cards'>
-<div class="card" style="width: 18rem;">
- <div class="card-body">
-   <h5 class="card-title">Manager</h5>
-   <p class="card-text">
-     <i class="fas fa-mug-hot"></i>
-       
-   </p>
- </div>
- <div class = 'list-container'>
- <ul class="list-group details">
-   <li class="list-group-item">ID: </li>
-   <li class="list-group-item">Email:</li>
-   <li class="list-group-item">Office Number:</li>
- </ul>
-</div>
-</div>
-`
+
 
 
 const engineerCard = `
@@ -97,3 +79,4 @@ const internCard = `
         </div>
         </div>
 `
+
