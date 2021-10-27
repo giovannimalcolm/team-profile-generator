@@ -147,6 +147,8 @@ var pickEmployee = (employeeType) => {
         return;
     }   
     else{
+        console.log(employeesArr)
+        renderCard(employeesArr);
         return;
     }
 

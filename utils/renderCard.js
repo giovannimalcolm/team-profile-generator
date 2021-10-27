@@ -1,13 +1,37 @@
+fullHTML = [];
+employeeName = ''
+idNum = ``
+email = ``
+officeNumber = ``
+
 var renderCard = (answers) => {
 
-    if (answers.officeNumber){
-        ///add the manager card 
+  answers.forEach((answer) => {
+    if (answer.constructor.name == 'Manager') {
+        newManagerCard = managerCard;
+        employeeName = answer.name
+        idNum = answer.id
+        email = answer.email
+        officeNumber = answer.officeNumber
+
+        
+
+        fullHTML.push(newManagerCard);
+        console.log(employeeName)
+        console.log(fullHTML);
+
+
+
     }
-    
 
-   
 
+
+  })
 }
+
+
+
+
 
 module.exports = renderCard;
 
@@ -77,6 +101,25 @@ const internCard = `
            <li class="list-group-item">Office Number:</li>
          </ul>
         </div>
-        </div>
-`
+        </div>`
 
+
+
+const managerCard = `
+
+        <div class="card" style="width: 18rem;">
+                 <div class="card-body">
+                   <h5 class="card-title">Manager</h5>
+                   <p class="card-text">
+                     <i class="fas fa-mug-hot"></i>
+                     ${employeeName}
+                   </p>
+                 </div>
+                 <div class = 'list-container'>
+                 <ul class="list-group details">
+                   <li class="list-group-item">ID: ${idNum}</li>
+                   <li class="list-group-item">Email:${email}</li>
+                   <li class="list-group-item">Office Number:${officeNumber}</li>
+                 </ul>
+                </div>
+                </div>`
