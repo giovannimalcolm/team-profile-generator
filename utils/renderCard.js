@@ -1,23 +1,19 @@
-const fs = require('fs');
+const fs = require('fs'); //add fs to the library
 
-
+//HTML portions to later be put together
 const endHTML = `
        </container>
-        
-        
        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
        crossorigin="anonymous"></script>
        <script src="/index.js" async defer></script>
        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-
-    </body>
-</html>
+       </body>
+       </html>
        `
 
- const baseHTML = `<!DOCTYPE html>
 
+const baseHTML = `<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -28,29 +24,28 @@ const endHTML = `
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-        
         <link rel="stylesheet" href="./style.css">
-
-
     </head>
     <body>
        <header class ="header">My Team</header>
        <container class = 'cards'>`
 
+//initial array to store HTML pieces and declaration of variables to use to insert inputs in respective employee cards 
 const fullHTML = [baseHTML];
 employeeName = ''
 idNum = ``
 email = ``
 officeNumber = ``
 
+//function to render employee cards. takes object array of all inputted employee information and loops thru to identify each object, 
+//extract its values, and input them into the respective card for HTML use
 var renderCard = (answers) => {
 
   for (i = 0; i < answers.length; i++) {
 
     var employeeName = answers[i].name
-    var {id} = answers[i]
+    var { id } = answers[i]
     var { email } = answers[i]
 
     if (answers[i].constructor.name == 'Manager') {
@@ -86,7 +81,7 @@ var renderCard = (answers) => {
       <div class="card-body">
         <h5 class="card-title">Intern</h5>
         <p class="card-text">
-          <i class="fas fa-mug-hot"></i>
+          <i class="fas fa-user-graduate"></i>
              ${employeeName}
         </p>
       </div>
@@ -101,8 +96,6 @@ var renderCard = (answers) => {
       `
 
       fullHTML.push(internCard)
-
-
     }
     else if (answers[i].constructor.name == 'Engineer') {
       var { github } = answers[i]
@@ -113,7 +106,7 @@ var renderCard = (answers) => {
              <div class="card-body">
                <h5 class="card-title">Engineer</h5>
                <p class="card-text">
-                 <i class="fas fa-mug-hot"></i>
+                 <i class="fas fa-glasses"></i>
                 ${employeeName}
                </p>
              </div>
@@ -127,33 +120,11 @@ var renderCard = (answers) => {
             </div>`
 
       fullHTML.push(engineerCard)
-
-
     }
   }
   fullHTML.push(endHTML)
   finalHTML = fullHTML.join('')
-  //finalHTML = setCharAt(finalHTML,0,"\"")
-  //finalHTML = setCharAt(finalHTML,finalHTML.length -1 ,"\"")
-
-  fs.writeFile('./dist/index.html', finalHTML, (err) =>  {err ? console.error(err) : console.info(`Something went wrong`)})      
-
+  fs.writeFileSync('./dist/index.html', finalHTML, (err) => { err ? console.error(err) : console.info(`Something went wrong`) }) //create HTML file and give error if needed
 }
 
-
-
-  module.exports = renderCard;
-
-
-
-  
-
-
-
-       
-
-       function setCharAt(str,index,chr) {
-        if(index > str.length-1) return str;
-        return str.substring(0,index) + chr + str.substring(index+1);
-    }
-    
+module.exports = renderCard;

@@ -1,3 +1,5 @@
+//library requirements
+
 const inquirer = require("inquirer");
 const fs = require("fs");
 const renderCard = require("./utils/renderCard");
@@ -6,11 +8,11 @@ const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern");
 const Employee = require("./lib/employee");
 
-const internal = require("stream");
-
+//array to add all inputted employee information to use for render
 employeesArr = []
 
-
+//function to prompt user and begin app. begins with question about manager and manager only as that is the bare minimum for a team.
+//answers are pushed to employeesArr. same concept for addIntern/Engineer.
 var promptUser = () => {
     inquirer
         .prompt([
@@ -46,7 +48,7 @@ var promptUser = () => {
             var manager1 = new Manager (answers.name, answers.ID, answers.email, answers.officeNumber);
             employeesArr.push(manager1);
            return pickEmployee(answers.employeeType)
-            //renderCard();
+          
         })
         .catch((err) => {
         err ? console.error(err) : console.info(`Something went wrong`)
@@ -137,6 +139,9 @@ const addIntern = () => {
         })
 };
 
+
+//ran at the end of each of the three questioning functions to allow the user to move on to the next set of questions. 
+//exits if the user pleases and moves on to rendering the content.
 var pickEmployee = (employeeType) => {
     if(employeeType == 'Engineer'){
         addEngineer();
@@ -147,7 +152,6 @@ var pickEmployee = (employeeType) => {
         return;
     }   
     else{
-        console.log(employeesArr)
         renderCard(employeesArr);
         return;
     }
@@ -160,7 +164,7 @@ var pickEmployee = (employeeType) => {
 
 
 
-
+//begin the app on run
 var init = () =>{
     promptUser();
 }
