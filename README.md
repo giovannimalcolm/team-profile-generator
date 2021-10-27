@@ -6,7 +6,7 @@
 
 Node.js commandline application that prompts the user to enter details about respective team members including: manager, engineer, and intern. Results are rendered on a HTML page with cards showing the profile of each team member. 
 
-![Screenshot]()
+![Screenshot](https://github.com/giovannimalcolm/team-profile-generator/blob/main/images/Screen%20Shot%202021-10-27%20at%204.16.59%20AM.png?raw=true)
 
 ## Table of Contents
 
