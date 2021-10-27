@@ -2,6 +2,11 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 const renderCard = require("./utils/renderCard");
 const Manager = require("./lib/manager");
+const Engineer = require("./lib/engineer");
+const Intern = require("./lib/intern");
+const Employee = require("./lib/employee");
+
+const internal = require("stream");
 
 employeesArr = []
 
@@ -40,8 +45,7 @@ var promptUser = () => {
             module.exports = answers;
             var manager1 = new Manager (answers.name, answers.ID, answers.email, answers.officeNumber);
             employeesArr.push(manager1);
-            console.log(employeesArr)
-            
+           return pickEmployee(answers.employeeType)
             //renderCard();
         })
         .catch((err) => {
@@ -50,7 +54,6 @@ var promptUser = () => {
 };
 
 const addEngineer = () => {
-     new Promise((resolve,reject) => {
     inquirer
         .prompt([
             {
@@ -80,14 +83,21 @@ const addEngineer = () => {
                 choices: ['Engineer', 'Intern', 'I don\'t want to add any more team members']
             }
         ])
-       // renderCard();
+        .then((answers) => {
+            var newEngineer = new Engineer(answers.name, answers.ID, answers.email, answers.github)
+            employeesArr.push(newEngineer)
+           return pickEmployee(answers.employeeType)
+
+        })
+        .catch((err) => {
+            err ? console.error(err) : console.info(`Something went wrong`)
+        })
+    
         
-    });
 };
 
 
 const addIntern = () => {
-     new Promise((resolve,reject) => {
     inquirer
         .prompt([
             {
@@ -117,17 +127,25 @@ const addIntern = () => {
                 choices: ['Engineer', 'Intern', 'I don\'t want to add any more team members']
             }
         ])
-        renderCard();//
-    });
+        .then((answers) => {
+            var newIntern = new Intern(answers.name, answers.ID, answers.email, answers.school)
+            employeesArr.push(newIntern)
+           return pickEmployee(answers.employeeType)
+        })
+        .catch((err) => {
+            err ? console.error(err) : console.info(`Something went wrong`)
+        })
 };
 
 var pickEmployee = (employeeType) => {
-    if(employeeType = 'Engineer'){
+    if(employeeType == 'Engineer'){
         addEngineer();
+        return;
     }
-    else if (employeeType = 'Intern'){
+    else if (employeeType == 'Intern'){
         addIntern();
-    }
+        return;
+    }   
     else{
         return;
     }
